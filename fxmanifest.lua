@@ -25,5 +25,6 @@ server_scripts {
 files {
     'web/index.html',
     'web/style.css',
-    'web/app.js'
+    'web/app.js',
+    'web/lucide.min.js'
 }

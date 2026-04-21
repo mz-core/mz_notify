@@ -37,6 +37,7 @@ local function normalizeDuration(duration)
     if not duration or duration < 1000 then
         return Config.DefaultDuration
     end
+
     return math.floor(duration)
 end
 
@@ -52,6 +53,7 @@ local function normalizePayload(data)
             duration = normalizeDuration(data.duration),
             position = normalizePosition(data.position),
             persistent = data.persistent == true,
+            progress = data.progress ~= false,
             id = data.id and tostring(data.id) or nil,
             icon = data.icon and tostring(data.icon) or nil,
             maxVisible = Config.MaxVisible
@@ -88,6 +90,7 @@ end)
 
 RegisterCommand('mnotifylocal', function(_, args)
     local notifyType = args[1] or 'info'
+
     showNotify({
         type = notifyType,
         title = 'Teste local',
