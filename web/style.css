@@ -240,19 +240,19 @@ body {
 .notify-glow-line {
   position: absolute;
   top: 0;
-  left: 14px;
-  right: 14px;
-  height: 2px;
+  left: 18px;
+  right: 18px;
+  height: 1px;
   border-radius: 999px;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.12),
     var(--notify-accent),
-    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.12),
     transparent
   );
-  opacity: 0.88;
+  opacity: 0.72;
 }
 
 .notify-inner {
@@ -267,27 +267,27 @@ body {
   flex-shrink: 0;
   width: var(--icon-size);
   height: var(--icon-size);
-  border-radius: 14px;
+  border-radius: 13px;
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.12),
-      rgba(255, 255, 255, 0.04)
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.025)
     ),
-    rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+    rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.16),
-    0 10px 24px rgba(0, 0, 0, 0.16);
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 8px 18px rgba(0, 0, 0, 0.14);
 }
 
 .notify-icon-glow {
   position: absolute;
-  inset: 8px;
-  border-radius: 12px;
+  inset: 10px;
+  border-radius: 10px;
   background: var(--notify-accent);
-  opacity: 0.34;
-  filter: blur(14px);
+  opacity: 0.22;
+  filter: blur(10px);
 }
 
 .notify-icon {
@@ -316,43 +316,43 @@ body {
 }
 
 .notify-title {
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.015em;
   color: var(--text);
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 .notify-message {
-  font-size: 12.75px;
-  line-height: 1.5;
+  font-size: 12.5px;
+  line-height: 1.46;
   color: var(--muted);
   word-break: break-word;
 }
 
 .notify-close {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.08),
-      rgba(255, 255, 255, 0.03)
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.02)
     ),
-    rgba(255, 255, 255, 0.02);
-  color: rgba(255, 255, 255, 0.7);
+    rgba(255, 255, 255, 0.015);
+  color: rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   pointer-events: auto;
   padding: 0;
-  margin-top: 2px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  margin-top: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   transition:
     transform 0.18s ease,
     background 0.18s ease,
@@ -363,14 +363,14 @@ body {
 .notify-close:hover {
   transform: translateY(-1px);
   color: var(--muted-strong);
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.12);
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.12),
-      rgba(255, 255, 255, 0.04)
+      rgba(255, 255, 255, 0.09),
+      rgba(255, 255, 255, 0.03)
     ),
-    rgba(255, 255, 255, 0.03);
+    rgba(255, 255, 255, 0.02);
 }
 
 .notify-close:active {
@@ -378,8 +378,8 @@ body {
 }
 
 .notify-close svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   stroke: currentColor;
   fill: none;
   stroke-width: 2.2;
@@ -388,20 +388,12 @@ body {
 }
 
 .notify-progress-track {
-  height: 6px;
+  height: 4px;
   margin: 0 16px 14px 74px;
   border-radius: 999px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.08),
-      rgba(255, 255, 255, 0.03)
-    ),
-    rgba(0, 0, 0, 0.24);
+  background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .notify-progress {
@@ -411,12 +403,13 @@ body {
   transform: scaleX(1);
   transform-origin: left center;
   will-change: transform;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.24), transparent 24%),
-    var(--notify-accent);
-  box-shadow:
-    0 0 20px rgba(255, 255, 255, 0.1),
-    0 0 20px var(--notify-accent);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.18),
+    var(--notify-accent) 20%,
+    var(--notify-accent)
+  );
+  box-shadow: none;
 }
 
 .notify.success {
