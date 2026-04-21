@@ -1,53 +1,124 @@
 # mz_notify
 
-Sistema de notificações NUI para o ecossistema `mz_`.
+[![FiveM](https://img.shields.io/badge/FiveM-Resource-blue)](https://fivem.net/)
+[![Lua](https://img.shields.io/badge/Language-Lua-yellow)](https://www.lua.org/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-## Recursos
+Sistema de notificações NUI para o ecossistema `mz_`. Uma solução leve e elegante para exibir notificações no seu servidor FiveM.
 
-- 4 tipos de notificação: `success`, `error`, `warning`, `info`
-- NUI leve e simples
-- uso via evento client
-- uso via export client
-- comandos de teste
-- posição configurável
-- progress bar
-- dedupe por `id`
+## 📋 Descrição
 
-## Instalação
+O `mz_notify` é um sistema de notificações baseado em NUI (Native UI) para FiveM, projetado para ser simples, leve e altamente configurável. Permite exibir notificações de diferentes tipos com suporte a ícones, barras de progresso e posicionamento personalizado.
 
-Adicione o resource na pasta do servidor e faça o `ensure` no seu `server.cfg`:
+## ✨ Recursos
+
+- **4 tipos de notificação**: `success`, `error`, `warning`, `info`
+- **Interface NUI leve e responsiva**
+- **Uso via evento client-side**
+- **Uso via export client-side**
+- **Comandos de teste integrados**
+- **Posição configurável** (top-left, top-right, bottom-left, bottom-right)
+- **Barra de progresso opcional**
+- **Dedupe por ID** para evitar notificações duplicadas
+- **Suporte a ícones personalizados**
+
+## 🚀 Instalação
+
+1. Baixe o resource `mz_notify`.
+2. Adicione a pasta `mz_notify` na sua pasta de resources do servidor.
+3. Adicione a linha abaixo no seu `server.cfg`:
 
 ```cfg
 ensure mz_notify
-Uso via server
+```
+
+4. Reinicie o servidor ou execute `refresh` e `ensure mz_notify` no console.
+
+## 📖 Uso
+
+### Via Evento (Server-Side)
+
+```lua
 TriggerClientEvent('mz_notify:client:show', source, {
     type = 'success',
     title = 'Inventário',
     message = 'Item adicionado com sucesso.',
     duration = 5000
 })
-Uso via export client
+```
+
+### Via Export (Client-Side)
+
+```lua
 exports['mz_notify']:Notify({
     type = 'info',
     title = 'Sistema',
     message = 'Olá mundo.',
     duration = 5000
 })
-Payload suportado
+```
+
+## ⚙️ Configuração
+
+O payload completo suportado é:
+
+```lua
 {
-    type = 'success', -- success | error | warning | info
-    title = 'Título',
-    message = 'Mensagem da notificação',
-    duration = 5000,
-    id = 'notify_unique_id',
-    persistent = false,
-    position = 'top-right',
-    icon = 'check'
+    type = 'success',        -- success | error | warning | info
+    title = 'Título',        -- Título da notificação
+    message = 'Mensagem',    -- Mensagem da notificação
+    duration = 5000,         -- Duração em milissegundos (opcional, padrão: 5000)
+    id = 'unique_id',        -- ID único para dedupe (opcional)
+    persistent = false,      -- Se a notificação é persistente (opcional)
+    position = 'top-right',  -- Posição: top-left | top-right | bottom-left | bottom-right
+    icon = 'check'           -- Ícone personalizado (opcional)
 }
-Tipos disponíveis
-success
-error
-warning
+```
+
+### Tipos Disponíveis
+
+- `success` - Verde, para ações bem-sucedidas
+- `error` - Vermelho, para erros
+- `warning` - Amarelo, para avisos
+- `info` - Azul, para informações gerais
+
+## 🛠️ Comandos de Teste
+
+Use os comandos abaixo no chat do jogo para testar as notificações:
+
+- `/notify success` - Testa notificação de sucesso
+- `/notify error` - Testa notificação de erro
+- `/notify warning` - Testa notificação de aviso
+- `/notify info` - Testa notificação de informação
+
+## 📁 Estrutura do Projeto
+
+```
+mz_notify/
+├── fxmanifest.lua      # Manifesto do resource
+├── client/
+│   └── main.lua        # Lógica client-side
+├── server/
+│   └── main.lua        # Lógica server-side
+├── shared/
+│   └── config.lua      # Configurações compartilhadas
+└── web/
+    ├── index.html      # Interface NUI
+    ├── style.css       # Estilos CSS
+    └── app.js          # Lógica JavaScript
+```
+
+## 📝 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests no repositório.
+
+---
+
+Feito com ❤️ para a comunidade FiveM.
 info
 Posições disponíveis
 top-right
@@ -74,17 +145,17 @@ caso a NUI não responda, o resource pode usar fallback por print no client
 Exemplo de integração
 Server -> client
 TriggerClientEvent('mz_notify:client:show', source, {
-    type = 'success',
-    title = 'Garagem',
-    message = 'Veículo guardado com sucesso.',
-    duration = 5000
+type = 'success',
+title = 'Garagem',
+message = 'Veículo guardado com sucesso.',
+duration = 5000
 })
 Client export
 exports['mz_notify']:Notify({
-    type = 'info',
-    title = 'mz_notify',
-    message = 'Notificação enviada pelo client.',
-    duration = 5000
+type = 'info',
+title = 'mz_notify',
+message = 'Notificação enviada pelo client.',
+duration = 5000
 })
 ACE / permissões
 
@@ -100,18 +171,18 @@ mz_notify/
 ├─ fxmanifest.lua
 ├─ README.md
 ├─ shared/
-│  └─ config.lua
+│ └─ config.lua
 ├─ server/
-│  └─ main.lua
+│ └─ main.lua
 ├─ client/
-│  └─ main.lua
+│ └─ main.lua
 └─ web/
-   ├─ index.html
-   ├─ style.css
-   └─ app.js
+├─ index.html
+├─ style.css
+└─ app.js
 Objetivo da v1
 
-A proposta da v1 do mz_notify é ser um sistema simples, reutilizável e padronizado para o ecossistema mz_, sem depender de frameworks pesados de frontend e sem acoplar a lógica ao mz_core.
+A proposta da v1 do mz*notify é ser um sistema simples, reutilizável e padronizado para o ecossistema mz*, sem depender de frameworks pesados de frontend e sem acoplar a lógica ao mz_core.
 
 Fora do escopo da v1
 histórico persistente
@@ -133,4 +204,4 @@ fallback alternativo com chat
 helpers prontos para integração com mz_core
 Licença / observação
 
-Este resource faz parte do ecossistema mz_ e foi pensado para ser pequeno, limpo e fácil de expandir.
+Este resource faz parte do ecossistema mz\_ e foi pensado para ser pequeno, limpo e fácil de expandir.
