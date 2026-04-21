@@ -1,71 +1,74 @@
 :root {
-  --text: #ffffff;
-  --muted: rgba(255, 255, 255, 0.72);
-  --shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
-  --radius: 12px;
+  --text: #f8fafc;
+  --muted: rgba(226, 232, 240, 0.78);
+  --muted-strong: rgba(226, 232, 240, 0.92);
+  --shadow: 0 24px 48px rgba(0, 0, 0, 0.34), 0 10px 24px rgba(0, 0, 0, 0.28);
+  --radius: 18px;
+  --container-width: min(392px, calc(100vw - 36px));
+  --icon-size: 44px;
 
-  --success-bg: rgba(6, 78, 59, 0.92);
-  --success-border: rgba(16, 185, 129, 0.45);
+  --success-bg: rgba(5, 46, 37, 0.9);
+  --success-border: rgba(52, 211, 153, 0.3);
   --success-color: #34d399;
 
-  --error-bg: rgba(127, 29, 29, 0.92);
-  --error-border: rgba(248, 113, 113, 0.45);
-  --error-color: #f87171;
+  --error-bg: rgba(69, 17, 32, 0.9);
+  --error-border: rgba(251, 113, 133, 0.3);
+  --error-color: #fb7185;
 
-  --warning-bg: rgba(120, 53, 15, 0.92);
-  --warning-border: rgba(251, 191, 36, 0.45);
+  --warning-bg: rgba(82, 45, 10, 0.9);
+  --warning-border: rgba(251, 191, 36, 0.3);
   --warning-color: #fbbf24;
 
-  --info-bg: rgba(30, 58, 138, 0.92);
-  --info-border: rgba(96, 165, 250, 0.45);
+  --info-bg: rgba(18, 47, 102, 0.9);
+  --info-border: rgba(96, 165, 250, 0.3);
   --info-color: #60a5fa;
 
-  --police-bg: rgba(49, 46, 129, 0.92);
-  --police-border: rgba(129, 140, 248, 0.45);
+  --police-bg: rgba(37, 34, 97, 0.9);
+  --police-border: rgba(129, 140, 248, 0.3);
   --police-color: #818cf8;
 
-  --money-bg: rgba(20, 83, 45, 0.92);
-  --money-border: rgba(74, 222, 128, 0.45);
+  --money-bg: rgba(18, 60, 37, 0.9);
+  --money-border: rgba(74, 222, 128, 0.3);
   --money-color: #4ade80;
 
-  --vehicle-bg: rgba(22, 78, 99, 0.92);
-  --vehicle-border: rgba(34, 211, 238, 0.45);
+  --vehicle-bg: rgba(15, 61, 77, 0.9);
+  --vehicle-border: rgba(34, 211, 238, 0.3);
   --vehicle-color: #22d3ee;
 
-  --social-bg: rgba(131, 24, 67, 0.92);
-  --social-border: rgba(244, 114, 182, 0.45);
+  --social-bg: rgba(92, 18, 56, 0.9);
+  --social-border: rgba(244, 114, 182, 0.3);
   --social-color: #f472b6;
 
-  --location-bg: rgba(124, 45, 18, 0.92);
-  --location-border: rgba(251, 146, 60, 0.45);
+  --location-bg: rgba(97, 37, 12, 0.9);
+  --location-border: rgba(251, 146, 60, 0.3);
   --location-color: #fb923c;
 
-  --phone-bg: rgba(88, 28, 135, 0.92);
-  --phone-border: rgba(192, 132, 252, 0.45);
+  --phone-bg: rgba(71, 24, 108, 0.9);
+  --phone-border: rgba(192, 132, 252, 0.3);
   --phone-color: #c084fc;
 
-  --mechanic-bg: rgba(51, 65, 85, 0.92);
-  --mechanic-border: rgba(148, 163, 184, 0.45);
+  --mechanic-bg: rgba(37, 47, 60, 0.9);
+  --mechanic-border: rgba(148, 163, 184, 0.3);
   --mechanic-color: #94a3b8;
 
-  --health-bg: rgba(136, 19, 55, 0.92);
-  --health-border: rgba(251, 113, 133, 0.45);
+  --health-bg: rgba(92, 15, 45, 0.9);
+  --health-border: rgba(251, 113, 133, 0.3);
   --health-color: #fb7185;
 
-  --death-bg: rgba(39, 39, 42, 0.92);
-  --death-border: rgba(161, 161, 170, 0.45);
-  --death-color: #a1a1aa;
+  --death-bg: rgba(29, 31, 38, 0.92);
+  --death-border: rgba(161, 161, 170, 0.28);
+  --death-color: #d4d4d8;
 
-  --achievement-bg: rgba(113, 63, 18, 0.92);
-  --achievement-border: rgba(250, 204, 21, 0.45);
+  --achievement-bg: rgba(93, 55, 12, 0.9);
+  --achievement-border: rgba(250, 204, 21, 0.3);
   --achievement-color: #facc15;
 
-  --timer-bg: rgba(17, 94, 89, 0.92);
-  --timer-border: rgba(45, 212, 191, 0.45);
+  --timer-bg: rgba(9, 67, 63, 0.9);
+  --timer-border: rgba(45, 212, 191, 0.3);
   --timer-color: #2dd4bf;
 
-  --mission-bg: rgba(134, 25, 143, 0.92);
-  --mission-border: rgba(232, 121, 249, 0.45);
+  --mission-bg: rgba(88, 19, 99, 0.9);
+  --mission-border: rgba(232, 121, 249, 0.3);
   --mission-color: #e879f9;
 }
 
@@ -82,7 +85,10 @@ body {
   padding: 0;
   overflow: hidden;
   background: transparent;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    "Bahnschrift SemiCondensed", "Segoe UI Variable Display", "Segoe UI",
+    sans-serif;
+  color: var(--text);
 }
 
 body {
@@ -93,77 +99,117 @@ body {
   position: fixed;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   z-index: 9999;
-  width: 360px;
+  width: var(--container-width);
 }
 
 .top-right {
   top: 18px;
   right: 18px;
-  align-items: stretch;
 }
 
 .top-left {
   top: 18px;
   left: 18px;
-  align-items: stretch;
 }
 
 .top-center {
   top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  align-items: stretch;
 }
 
 .bottom-right {
   right: 18px;
   bottom: 18px;
-  align-items: stretch;
 }
 
 .bottom-left {
   left: 18px;
   bottom: 18px;
-  align-items: stretch;
 }
 
 .bottom-center {
   left: 50%;
   bottom: 18px;
   transform: translateX(-50%);
-  align-items: stretch;
 }
 
 .notify {
+  --notify-bg: var(--info-bg);
+  --notify-border: var(--info-border);
+  --notify-accent: var(--info-color);
   position: relative;
+  width: 100%;
   overflow: hidden;
   border-radius: var(--radius);
-  border: 1px solid transparent;
-  box-shadow: var(--shadow);
-  min-width: 320px;
-  max-width: 400px;
+  border: 1px solid var(--notify-border);
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.12),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 255, 255, 0.06),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.02) 42%,
+      rgba(255, 255, 255, 0) 72%
+    ),
+    var(--notify-bg);
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: var(--notify-accent);
   opacity: 0;
-  transform: translateX(18px) scale(0.98);
-  animation: slideInRight 0.28s ease forwards;
+  transform: translateX(22px) scale(0.97);
+  animation: slideInRight 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.notify::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4),
+    var(--notify-accent) 28%,
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+.notify::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 36%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.08), transparent 40%);
+  pointer-events: none;
 }
 
 .notify.left-enter {
-  transform: translateX(-18px) scale(0.98);
-  animation: slideInLeft 0.28s ease forwards;
+  transform: translateX(-22px) scale(0.97);
+  animation: slideInLeft 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-.notify.top-center-enter,
-.notify.bottom-center-enter {
-  transform: translateY(-12px) scale(0.98);
-  animation: slideInTop 0.28s ease forwards;
+.notify.top-center-enter {
+  transform: translateY(-16px) scale(0.97);
+  animation: slideInTop 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .notify.bottom-right-enter,
-.notify.bottom-left-enter {
-  transform: translateY(12px) scale(0.98);
-  animation: slideInBottom 0.28s ease forwards;
+.notify.bottom-left-enter,
+.notify.bottom-center-enter {
+  transform: translateY(16px) scale(0.97);
+  animation: slideInBottom 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .notify.removing {
@@ -184,59 +230,81 @@ body {
   animation: slideOutBottom 0.22s ease forwards;
 }
 
+.notify-glow-line,
+.notify-inner,
+.notify-progress-track {
+  position: relative;
+  z-index: 1;
+}
+
 .notify-glow-line {
   position: absolute;
-  left: 0;
-  right: 0;
   top: 0;
-  height: 1px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  border-radius: 999px;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.32),
+    rgba(255, 255, 255, 0.2),
+    var(--notify-accent),
+    rgba(255, 255, 255, 0.2),
     transparent
   );
+  opacity: 0.88;
 }
 
 .notify-inner {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  padding: 15px 16px 14px 16px;
+  gap: 14px;
+  padding: 16px 16px 12px 16px;
 }
 
 .notify-icon-wrap {
   position: relative;
   flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  margin-top: 1px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.04)
+    ),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 10px 24px rgba(0, 0, 0, 0.16);
 }
 
 .notify-icon-glow {
   position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  background: currentColor;
-  opacity: 0.2;
-  filter: blur(8px);
+  inset: 8px;
+  border-radius: 12px;
+  background: var(--notify-accent);
+  opacity: 0.34;
+  filter: blur(14px);
 }
 
 .notify-icon {
   position: relative;
-  width: 26px;
-  height: 26px;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .notify-icon svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   stroke: currentColor;
   fill: none;
-  stroke-width: 2.2;
+  stroke-width: 2.35;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -244,42 +312,74 @@ body {
 .notify-content {
   flex: 1;
   min-width: 0;
+  padding-top: 2px;
 }
 
 .notify-title {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.1px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   color: var(--text);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 .notify-message {
-  font-size: 12px;
-  line-height: 1.45;
+  font-size: 12.75px;
+  line-height: 1.5;
   color: var(--muted);
   word-break: break-word;
 }
 
 .notify-close {
   flex-shrink: 0;
-  width: 22px;
-  height: 22px;
-  border: none;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.55);
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.03)
+    ),
+    rgba(255, 255, 255, 0.02);
+  color: rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   pointer-events: auto;
   padding: 0;
-  margin-top: -2px;
+  margin-top: 2px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.notify-close:hover {
+  transform: translateY(-1px);
+  color: var(--muted-strong);
+  border-color: rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.04)
+    ),
+    rgba(255, 255, 255, 0.03);
+}
+
+.notify-close:active {
+  transform: translateY(0);
 }
 
 .notify-close svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   stroke: currentColor;
   fill: none;
   stroke-width: 2.2;
@@ -288,155 +388,137 @@ body {
 }
 
 .notify-progress-track {
-  height: 4px;
-  background: rgba(0, 0, 0, 0.28);
+  height: 6px;
+  margin: 0 16px 14px 74px;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.03)
+    ),
+    rgba(0, 0, 0, 0.24);
   overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18);
 }
 
 .notify-progress {
   height: 100%;
   width: 100%;
+  border-radius: inherit;
   transform: scaleX(1);
   transform-origin: left center;
   will-change: transform;
-  box-shadow: 0 0 10px currentColor;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.24), transparent 24%),
+    var(--notify-accent);
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.1),
+    0 0 20px var(--notify-accent);
 }
 
-/* tipos */
 .notify.success {
-  background: var(--success-bg);
-  border-color: var(--success-border);
-  color: var(--success-color);
-}
-.notify.error {
-  background: var(--error-bg);
-  border-color: var(--error-border);
-  color: var(--error-color);
-}
-.notify.warning {
-  background: var(--warning-bg);
-  border-color: var(--warning-border);
-  color: var(--warning-color);
-}
-.notify.info {
-  background: var(--info-bg);
-  border-color: var(--info-border);
-  color: var(--info-color);
-}
-.notify.police {
-  background: var(--police-bg);
-  border-color: var(--police-border);
-  color: var(--police-color);
-}
-.notify.money {
-  background: var(--money-bg);
-  border-color: var(--money-border);
-  color: var(--money-color);
-}
-.notify.vehicle {
-  background: var(--vehicle-bg);
-  border-color: var(--vehicle-border);
-  color: var(--vehicle-color);
-}
-.notify.social {
-  background: var(--social-bg);
-  border-color: var(--social-border);
-  color: var(--social-color);
-}
-.notify.location {
-  background: var(--location-bg);
-  border-color: var(--location-border);
-  color: var(--location-color);
-}
-.notify.phone {
-  background: var(--phone-bg);
-  border-color: var(--phone-border);
-  color: var(--phone-color);
-}
-.notify.mechanic {
-  background: var(--mechanic-bg);
-  border-color: var(--mechanic-border);
-  color: var(--mechanic-color);
-}
-.notify.health {
-  background: var(--health-bg);
-  border-color: var(--health-border);
-  color: var(--health-color);
-}
-.notify.death {
-  background: var(--death-bg);
-  border-color: var(--death-border);
-  color: var(--death-color);
-}
-.notify.achievement {
-  background: var(--achievement-bg);
-  border-color: var(--achievement-border);
-  color: var(--achievement-color);
-}
-.notify.timer {
-  background: var(--timer-bg);
-  border-color: var(--timer-border);
-  color: var(--timer-color);
-}
-.notify.mission {
-  background: var(--mission-bg);
-  border-color: var(--mission-border);
-  color: var(--mission-color);
+  --notify-bg: var(--success-bg);
+  --notify-border: var(--success-border);
+  --notify-accent: var(--success-color);
 }
 
-.notify.success .notify-progress {
-  background: var(--success-color);
+.notify.error {
+  --notify-bg: var(--error-bg);
+  --notify-border: var(--error-border);
+  --notify-accent: var(--error-color);
 }
-.notify.error .notify-progress {
-  background: var(--error-color);
+
+.notify.warning {
+  --notify-bg: var(--warning-bg);
+  --notify-border: var(--warning-border);
+  --notify-accent: var(--warning-color);
 }
-.notify.warning .notify-progress {
-  background: var(--warning-color);
+
+.notify.info {
+  --notify-bg: var(--info-bg);
+  --notify-border: var(--info-border);
+  --notify-accent: var(--info-color);
 }
-.notify.info .notify-progress {
-  background: var(--info-color);
+
+.notify.police {
+  --notify-bg: var(--police-bg);
+  --notify-border: var(--police-border);
+  --notify-accent: var(--police-color);
 }
-.notify.police .notify-progress {
-  background: var(--police-color);
+
+.notify.money {
+  --notify-bg: var(--money-bg);
+  --notify-border: var(--money-border);
+  --notify-accent: var(--money-color);
 }
-.notify.money .notify-progress {
-  background: var(--money-color);
+
+.notify.vehicle {
+  --notify-bg: var(--vehicle-bg);
+  --notify-border: var(--vehicle-border);
+  --notify-accent: var(--vehicle-color);
 }
-.notify.vehicle .notify-progress {
-  background: var(--vehicle-color);
+
+.notify.social {
+  --notify-bg: var(--social-bg);
+  --notify-border: var(--social-border);
+  --notify-accent: var(--social-color);
 }
-.notify.social .notify-progress {
-  background: var(--social-color);
+
+.notify.location {
+  --notify-bg: var(--location-bg);
+  --notify-border: var(--location-border);
+  --notify-accent: var(--location-color);
 }
-.notify.location .notify-progress {
-  background: var(--location-color);
+
+.notify.phone {
+  --notify-bg: var(--phone-bg);
+  --notify-border: var(--phone-border);
+  --notify-accent: var(--phone-color);
 }
-.notify.phone .notify-progress {
-  background: var(--phone-color);
+
+.notify.mechanic {
+  --notify-bg: var(--mechanic-bg);
+  --notify-border: var(--mechanic-border);
+  --notify-accent: var(--mechanic-color);
 }
-.notify.mechanic .notify-progress {
-  background: var(--mechanic-color);
+
+.notify.health {
+  --notify-bg: var(--health-bg);
+  --notify-border: var(--health-border);
+  --notify-accent: var(--health-color);
 }
-.notify.health .notify-progress {
-  background: var(--health-color);
+
+.notify.death {
+  --notify-bg: var(--death-bg);
+  --notify-border: var(--death-border);
+  --notify-accent: var(--death-color);
 }
-.notify.death .notify-progress {
-  background: var(--death-color);
+
+.notify.achievement {
+  --notify-bg: var(--achievement-bg);
+  --notify-border: var(--achievement-border);
+  --notify-accent: var(--achievement-color);
 }
-.notify.achievement .notify-progress {
-  background: var(--achievement-color);
+
+.notify.timer {
+  --notify-bg: var(--timer-bg);
+  --notify-border: var(--timer-border);
+  --notify-accent: var(--timer-color);
 }
-.notify.timer .notify-progress {
-  background: var(--timer-color);
-}
-.notify.mission .notify-progress {
-  background: var(--mission-color);
+
+.notify.mission {
+  --notify-bg: var(--mission-bg);
+  --notify-border: var(--mission-border);
+  --notify-accent: var(--mission-color);
 }
 
 @keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateX(18px) scale(0.98);
+    transform: translateX(22px) scale(0.97);
   }
   to {
     opacity: 1;
@@ -447,7 +529,7 @@ body {
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-18px) scale(0.98);
+    transform: translateX(-22px) scale(0.97);
   }
   to {
     opacity: 1;
@@ -458,7 +540,7 @@ body {
 @keyframes slideInTop {
   from {
     opacity: 0;
-    transform: translateY(-12px) scale(0.98);
+    transform: translateY(-16px) scale(0.97);
   }
   to {
     opacity: 1;
@@ -469,7 +551,7 @@ body {
 @keyframes slideInBottom {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.98);
+    transform: translateY(16px) scale(0.97);
   }
   to {
     opacity: 1;
@@ -484,7 +566,7 @@ body {
   }
   to {
     opacity: 0;
-    transform: translateX(18px) scale(0.98);
+    transform: translateX(20px) scale(0.97);
   }
 }
 
@@ -495,7 +577,7 @@ body {
   }
   to {
     opacity: 0;
-    transform: translateX(-18px) scale(0.98);
+    transform: translateX(-20px) scale(0.97);
   }
 }
 
@@ -506,7 +588,7 @@ body {
   }
   to {
     opacity: 0;
-    transform: translateY(-12px) scale(0.98);
+    transform: translateY(-14px) scale(0.97);
   }
 }
 
@@ -517,6 +599,6 @@ body {
   }
   to {
     opacity: 0;
-    transform: translateY(12px) scale(0.98);
+    transform: translateY(14px) scale(0.97);
   }
 }

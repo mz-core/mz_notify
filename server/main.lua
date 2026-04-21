@@ -75,6 +75,44 @@ local function sendNotify(target, data)
     TriggerClientEvent('mz_notify:client:show', target, payload)
 end
 
+local function sendPreviewInBatches(target, types, options)
+    options = type(options) == 'table' and options or {}
+
+    local batchSize = math.max(1, tonumber(options.batchSize) or Config.MaxVisible or 5)
+    local duration = normalizeDuration(options.duration or 6000)
+    local position = normalizePosition(options.position)
+    local batchDelay = tonumber(options.batchDelay)
+
+    if not batchDelay or batchDelay < 250 then
+        batchDelay = duration + 350
+    else
+        batchDelay = math.floor(batchDelay)
+    end
+
+    CreateThread(function()
+        for startIndex = 1, #types, batchSize do
+            local endIndex = math.min(startIndex + batchSize - 1, #types)
+
+            for i = startIndex, endIndex do
+                local notifyType = types[i]
+
+                sendNotify(target, {
+                    type = notifyType,
+                    title = ('Tipo: %s'):format(notifyType),
+                    message = ('Preview em lote %d-%d de %d.'):format(startIndex, endIndex, #types),
+                    duration = duration,
+                    position = position,
+                    id = ('preview_%s'):format(notifyType)
+                })
+            end
+
+            if endIndex < #types then
+                Wait(batchDelay)
+            end
+        end
+    end)
+end
+
 exports('Notify', function(target, data)
     sendNotify(target, data)
 end)
@@ -192,18 +230,12 @@ RegisterCommand('mnotifyall', function(source)
         'death', 'achievement', 'timer', 'mission'
     }
 
-    for i = 1, #types do
-        local notifyType = types[i]
-
-        sendNotify(source, {
-            type = notifyType,
-            title = ('Tipo: %s'):format(notifyType),
-            message = 'Preview de estilo/cor.',
-            duration = 6000,
-            position = Config.DefaultPosition,
-            id = ('preview_%s'):format(notifyType)
-        })
-    end
+    sendPreviewInBatches(source, types, {
+        batchSize = Config.MaxVisible,
+        duration = 6000,
+        batchDelay = 6350,
+        position = Config.DefaultPosition
+    })
 end, true)
 
 AddEventHandler('onResourceStart', function(resourceName)
