@@ -1,207 +1,241 @@
 # mz_notify
 
-[![FiveM](https://img.shields.io/badge/FiveM-Resource-blue)](https://fivem.net/)
-[![Lua](https://img.shields.io/badge/Language-Lua-yellow)](https://www.lua.org/)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![FiveM](https://img.shields.io/badge/FiveM-Resource-f28c28?style=for-the-badge)](https://fivem.net/)
+[![Lua](https://img.shields.io/badge/Lua-5.4-2c2d72?style=for-the-badge)](https://www.lua.org/)
+[![Version](https://img.shields.io/badge/version-1.0.0-1f9d55?style=for-the-badge)](#)
+[![NUI](https://img.shields.io/badge/UI-NUI-111827?style=for-the-badge)](#)
 
-Sistema de notificações NUI para o ecossistema `mz_`. Uma solução leve e elegante para exibir notificações no seu servidor FiveM.
+> Sistema de notificações NUI para o ecossistema `mz_`, feito para ser leve, direto e fácil de integrar em qualquer servidor FiveM.
 
-## 📋 Descrição
+## Visão Geral
 
-O `mz_notify` é um sistema de notificações baseado em NUI (Native UI) para FiveM, projetado para ser simples, leve e altamente configurável. Permite exibir notificações de diferentes tipos com suporte a ícones, barras de progresso e posicionamento personalizado.
+O `mz_notify` é um resource de notificações com interface NUI, animação de entrada e saída, barra de progresso, suporte a posições diferentes na tela e integração simples por evento ou export.
 
-## ✨ Recursos
+Ele foi pensado para resolver o básico muito bem:
 
-- **4 tipos de notificação**: `success`, `error`, `warning`, `info`
-- **Interface NUI leve e responsiva**
-- **Uso via evento client-side**
-- **Uso via export client-side**
-- **Comandos de teste integrados**
-- **Posição configurável** (top-left, top-right, bottom-left, bottom-right)
-- **Barra de progresso opcional**
-- **Dedupe por ID** para evitar notificações duplicadas
-- **Suporte a ícones personalizados**
+- visual limpo e responsivo
+- integração rápida com outros resources
+- baixo acoplamento com o restante do ecossistema
+- configuração simples para uso imediato
 
-## 🚀 Instalação
+## Destaques
 
-1. Baixe o resource `mz_notify`.
-2. Adicione a pasta `mz_notify` na sua pasta de resources do servidor.
-3. Adicione a linha abaixo no seu `server.cfg`:
+- 4 tipos nativos de notificação: `success`, `error`, `warning` e `info`
+- NUI leve com layout moderno e animações suaves
+- envio por evento client-side
+- export client-side
+- export server-side
+- dedupe por `id` para substituir notificações repetidas
+- barra de progresso automática para notificações temporárias
+- suporte a notificações persistentes
+- posição configurável: `top-right`, `top-left`, `bottom-right`, `bottom-left`
+- fallback por `print` no client quando habilitado
+- limite de notificações visíveis configurável
+- comandos prontos para teste no jogo
+
+## Instalação
+
+1. Coloque a pasta `mz_notify` dentro da sua pasta de resources.
+2. Adicione o resource no `server.cfg`:
 
 ```cfg
 ensure mz_notify
 ```
 
-4. Reinicie o servidor ou execute `refresh` e `ensure mz_notify` no console.
+3. Reinicie o servidor ou rode:
 
-## 📖 Uso
+```cfg
+refresh
+ensure mz_notify
+```
 
-### Via Evento (Server-Side)
+## Uso Rápido
+
+### Server -> Client com evento
 
 ```lua
 TriggerClientEvent('mz_notify:client:show', source, {
     type = 'success',
-    title = 'Inventário',
-    message = 'Item adicionado com sucesso.',
+    title = 'Garagem',
+    message = 'Veículo guardado com sucesso.',
     duration = 5000
 })
 ```
 
-### Via Export (Client-Side)
+### Server export
+
+```lua
+exports['mz_notify']:Notify(source, {
+    type = 'warning',
+    title = 'Atenção',
+    message = 'Seu veículo está com o motor danificado.',
+    duration = 5000
+})
+```
+
+### Client export
 
 ```lua
 exports['mz_notify']:Notify({
     type = 'info',
     title = 'Sistema',
-    message = 'Olá mundo.',
+    message = 'Notificação enviada pelo client.',
     duration = 5000
 })
 ```
 
-## ⚙️ Configuração
+### Evento server-side para o próprio jogador
 
-O payload completo suportado é:
+```lua
+TriggerServerEvent('mz_notify:server:notify', {
+    type = 'error',
+    title = 'Inventário',
+    message = 'Você não tem espaço suficiente.',
+    duration = 5000
+})
+```
+
+## Payload Suportado
+
+Use esta estrutura para enviar notificações:
 
 ```lua
 {
-    type = 'success',        -- success | error | warning | info
-    title = 'Título',        -- Título da notificação
-    message = 'Mensagem',    -- Mensagem da notificação
-    duration = 5000,         -- Duração em milissegundos (opcional, padrão: 5000)
-    id = 'unique_id',        -- ID único para dedupe (opcional)
-    persistent = false,      -- Se a notificação é persistente (opcional)
-    position = 'top-right',  -- Posição: top-left | top-right | bottom-left | bottom-right
-    icon = 'check'           -- Ícone personalizado (opcional)
+    type = 'success',
+    title = 'Título',
+    message = 'Mensagem da notificação',
+    duration = 5000,
+    id = 'unique_id',
+    persistent = false,
+    position = 'top-right',
+    icon = 'check'
 }
 ```
 
-### Tipos Disponíveis
+### Campos
 
-- `success` - Verde, para ações bem-sucedidas
-- `error` - Vermelho, para erros
-- `warning` - Amarelo, para avisos
-- `info` - Azul, para informações gerais
+| Campo        | Tipo      | Descrição                                                  |
+| ------------ | --------- | ---------------------------------------------------------- |
+| `type`       | `string`  | Tipo da notificação: `success`, `error`, `warning`, `info` |
+| `title`      | `string`  | Título exibido no card                                     |
+| `message`    | `string`  | Conteúdo principal da notificação                          |
+| `duration`   | `number`  | Duração em ms. Valores abaixo de `1000` caem no padrão     |
+| `id`         | `string`  | Identificador único para substituir notificações iguais    |
+| `persistent` | `boolean` | Se `true`, não remove automaticamente                      |
+| `position`   | `string`  | `top-right`, `top-left`, `bottom-right`, `bottom-left`     |
+| `icon`       | `string`  | Campo aceito no payload para uso/customização futura       |
 
-## 🛠️ Comandos de Teste
+## Comportamento Padrão
 
-Use os comandos abaixo no chat do jogo para testar as notificações:
+As configurações atuais do resource são:
 
-- `/notify success` - Testa notificação de sucesso
-- `/notify error` - Testa notificação de erro
-- `/notify warning` - Testa notificação de aviso
-- `/notify info` - Testa notificação de informação
-
-## 📁 Estrutura do Projeto
-
-```
-mz_notify/
-├── fxmanifest.lua      # Manifesto do resource
-├── client/
-│   └── main.lua        # Lógica client-side
-├── server/
-│   └── main.lua        # Lógica server-side
-├── shared/
-│   └── config.lua      # Configurações compartilhadas
-└── web/
-    ├── index.html      # Interface NUI
-    ├── style.css       # Estilos CSS
-    └── app.js          # Lógica JavaScript
+```lua
+Config.Debug = false
+Config.DefaultDuration = 5000
+Config.DefaultPosition = 'top-right'
+Config.MaxVisible = 4
+Config.EnableFallbackPrint = true
 ```
 
-## 📝 Licença
+Na prática, isso significa:
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+- duração padrão de `5000ms`
+- posição padrão em `top-right`
+- até `4` notificações visíveis por container
+- fallback no client via `print` quando habilitado
+- tipos inválidos viram `info`
 
-## 🤝 Contribuição
+## Comandos de Teste
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests no repositório.
+### Comandos server-side
 
----
-
-Feito com ❤️ para a comunidade FiveM.
-info
-Posições disponíveis
-top-right
-top-left
-bottom-right
-bottom-left
-Comandos de teste
-Notificação rápida por tipo
+```text
 /mnotifytest success
 /mnotifytest error
 /mnotifytest warning
 /mnotifytest info
-Notificação personalizada
+```
+
+```text
 /mnotify success Inventário|Item recebido com sucesso|5000
 /mnotify error Sistema|Algo deu errado|5000
 /mnotify warning Atenção|Você está sem permissão|5000
 /mnotify info MZ Core|Teste visual da notify|5000
-Observações
-duration padrão: 5000
-position padrão: top-right
-persistent = true impede remoção automática
-se um id igual for enviado novamente, a notificação anterior é substituída
-caso a NUI não responda, o resource pode usar fallback por print no client
-Exemplo de integração
-Server -> client
-TriggerClientEvent('mz_notify:client:show', source, {
-type = 'success',
-title = 'Garagem',
-message = 'Veículo guardado com sucesso.',
-duration = 5000
-})
-Client export
-exports['mz_notify']:Notify({
-type = 'info',
-title = 'mz_notify',
-message = 'Notificação enviada pelo client.',
-duration = 5000
-})
-ACE / permissões
+```
 
-Se quiser restringir os comandos de teste para o grupo mz_owner, use este padrão no seu arquivo de permissões:
+### Comando local no client
 
+```text
+/mnotifylocal success
+/mnotifylocal error
+/mnotifylocal warning
+/mnotifylocal info
+```
+
+## Permissões ACE
+
+Se quiser restringir os comandos de teste para um grupo específico, você pode usar um padrão como este:
+
+```cfg
 add_ace group.mz_owner command allow
 add_ace group.mz_owner command.quit deny
 
 add_principal identifier.fivem:SEU_ID_FIVEM_AQUI group.mz_owner
 add_principal identifier.fivem:ID_DO_SOCIO_AQUI group.mz_owner
-Estrutura do resource
+```
+
+## Estrutura do Projeto
+
+```text
 mz_notify/
-├─ fxmanifest.lua
-├─ README.md
-├─ shared/
-│ └─ config.lua
-├─ server/
-│ └─ main.lua
-├─ client/
-│ └─ main.lua
-└─ web/
-├─ index.html
-├─ style.css
-└─ app.js
-Objetivo da v1
+|-- fxmanifest.lua
+|-- README.md
+|-- shared/
+|   `-- config.lua
+|-- server/
+|   `-- main.lua
+|-- client/
+|   `-- main.lua
+`-- web/
+    |-- index.html
+    |-- style.css
+    `-- app.js
+```
 
-A proposta da v1 do mz*notify é ser um sistema simples, reutilizável e padronizado para o ecossistema mz*, sem depender de frameworks pesados de frontend e sem acoplar a lógica ao mz_core.
+## Escopo da V1
 
-Fora do escopo da v1
-histórico persistente
-central de notificações
-múltiplos temas visuais
-ações clicáveis
-integração com banco de dados
-animações complexas
-sistema avançado de sons
-Roadmap futuro
+O objetivo da primeira versão é ser um sistema de notificação:
 
-Possíveis melhorias para versões futuras:
+- simples de integrar
+- reutilizável entre resources
+- visualmente consistente
+- desacoplado de frameworks pesados
+- fácil de expandir no futuro
 
-ícones SVG mais refinados
-som opcional por tipo
-botão de fechar para notificações persistentes
-integração visual mais forte com a identidade da marca MZ
-fallback alternativo com chat
-helpers prontos para integração com mz_core
-Licença / observação
+Fora do escopo da V1:
 
-Este resource faz parte do ecossistema mz\_ e foi pensado para ser pequeno, limpo e fácil de expandir.
+- histórico persistente
+- central de notificações
+- múltiplos temas visuais
+- ações clicáveis
+- integração com banco de dados
+- animações complexas
+- sistema avançado de sons
+
+## Roadmap
+
+Ideias naturais para próximas versões:
+
+- ícones SVG mais refinados
+- som opcional por tipo
+- botão de fechar para notificações persistentes
+- identidade visual ainda mais alinhada com a marca `mz_`
+- fallback alternativo via chat
+- helpers prontos para integração com `mz_core`
+
+## Observações
+
+- notificações com o mesmo `id` substituem a anterior no mesmo container
+- a NUI respeita limite de itens visíveis por posição
+- notificações persistentes não exibem remoção automática por tempo
+- o resource foi desenhado para permanecer pequeno, limpo e fácil de manter
