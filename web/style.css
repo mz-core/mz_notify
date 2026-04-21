@@ -79,7 +79,6 @@ body {
   box-shadow: var(--shadow);
   color: var(--text);
   overflow: hidden;
-  backdrop-filter: blur(8px);
   opacity: 0;
   transform: translateY(-8px);
   animation: notifyIn 0.2s ease forwards;
